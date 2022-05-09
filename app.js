@@ -1,15 +1,16 @@
 const express = require('express');
-
-const router = express.Router();
+const db = require('./database');
 
 const app = express();
 const port = 3000;
 
+// middleware express
 app.use(express.json());
 
-app.listen(port, () => { console.log("PORT 열림") });
+//route
+app.use('/', require('./routes'));
 
-app.get('/', (req, res) =>
-{
-    res.send("get request");
+app.listen(port, () => { 
+    console.log("PORT 열림");
+    db.ConnectionPostgreSQL();
 });
