@@ -1,16 +1,24 @@
+// node require
 const express = require('express');
+
+// user require ( initialize )
+require('./app_env.js');
+
+// user require ( module )
 const db = require('./database');
+const route = require('./routes');
 
+// get express object
 const app = express();
-const port = 3000;
 
-// middleware express
+// set express middleware
 app.use(express.json());
 
-//route
-app.use('/', require('./routes'));
+// set route
+app.use('/', route);
 
-app.listen(port, () => { 
-    console.log("PORT 열림");
+// open port
+app.listen(process.env.PORT, () => { 
+    console.log("PORT 열림 : " + process.env.PORT);
     db.ConnectionPostgreSQL();
 });
