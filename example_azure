@@ -18,8 +18,9 @@ vnet
 
   또는
   az acr login --name mopicnodeappacr.azurecr.io --expose-token
-  az acr task create --image nodeapp_test_db --name task-nodeapp-test --registry mopicnodeappacr --context https://github.com/Arnea1/nodeApp_test_db.git#main --file Dockerfile --git-access-token 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 --commit-trigger-enabled false --base-image-trigger-enabled true
-
+  az acr task create --image nodeapp_test_db --name task-nodeapp-test --registry mopicnodeappacr --context https://github.com/Arnea1/nodeApp_test_db.git#main --file Dockerfile --git-access-token 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 --commit-trigger-enabled false --base-image-trigger-enabled true
+  az acr task run --registry mopicnodeappacr --name task-nodeapp-test --context https://github.com/Arnea1/nodeApp_test_db.git#main --file Dockerfile
+az acr task list-runs -r mopicnodeappacr -o table
   깃허브 연결을 하려면 트리거 명령까지 붙여야함
     
 
