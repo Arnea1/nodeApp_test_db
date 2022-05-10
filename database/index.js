@@ -32,7 +32,6 @@ exports.ConnectionPostgreSQL = function()
                 {
                     console.log(res.rows);
                 }
-                
             })
         }
     });
