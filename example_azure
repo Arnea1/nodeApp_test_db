@@ -7,7 +7,23 @@ vnet
 
 아래는 리소스그룹 통일
   쿠버네티스 클러스터
+
   컨테이너 레지스트리
+    로컬 터미널에서 다음을 수행
+    docker login $ACR_NAME
+      컨테이너 계정 및 비밀번호 입력
+      로그인 성공 메세지
+    로컬 도커의 이미지를 생성 ( 도커허브 또는 로컬 빌드 )
+    로컬 도커의 이미지를 azure acr로그인서버/image로 바꿔서 push
+
+  또는
+  az acr login --name mopicnodeappacr.azurecr.io --expose-token
+  az acr task create --image nodeapp_test_db --name task-nodeapp-test --registry mopicnodeappacr --context https://github.com/Arnea1/nodeApp_test_db.git#main --file Dockerfile --git-access-token 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 --commit-trigger-enabled false --base-image-trigger-enabled true
+
+  깃허브 연결을 하려면 트리거 명령까지 붙여야함
+    
+
+
   데이터베이스
     - vnet을 이용한 데이터베이스는 서비스 클러스터 영역의 주소 내의 서브넷을 등록
       
